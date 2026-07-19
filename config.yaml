@@ -1,0 +1,42 @@
+database:
+  host: "localhost"
+  port: 5432
+  name: "askmydocs"
+  user: "postgres"
+  password: "postgres"
+
+embedding:
+  model: "BAAI/bge-base-en-v1.5"
+  dimension: 768
+  batch_size: 64
+
+reranker:
+  model: "cross-encoder/ms-marco-MiniLM-L-12-v2"
+  top_n: 8
+  score_threshold: 0.0
+
+retrieval:
+  vector_top_k: 30
+  bm25_top_k: 30
+  rrf_k: 60
+  final_top_k: 8
+
+chunking:
+  max_tokens: 512
+  overlap_tokens: 50
+  min_tokens: 30
+
+generation:
+  model: "gpt-4o"
+  max_tokens: 2048
+  temperature: 0.1
+
+eval:
+  faithfulness_threshold: 0.90
+  correctness_threshold: 0.80
+  retrieval_recall_threshold: 0.85
+  max_p95_latency_ms: 3000
+
+api:
+  host: "0.0.0.0"
+  port: 8000

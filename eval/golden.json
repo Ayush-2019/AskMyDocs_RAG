@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "description": "Golden evaluation dataset for Ask My Docs RAG pipeline",
+    "instructions": "Add real Q&A pairs from domain experts. Start with 50, grow to 200+."
+  },
+  "test_cases": [
+    {
+      "id": "auth-001",
+      "question": "How do I enable OAuth2 refresh token rotation?",
+      "expected_answer": "Set oauth2.refresh.rotation=true in auth.yaml. The default refresh token lifetime is 7 days, configurable via oauth2.refresh.lifetime_days.",
+      "expected_chunk_keywords": ["oauth2", "refresh", "rotation", "auth.yaml"],
+      "tags": ["auth", "configuration"]
+    },
+    {
+      "id": "auth-002",
+      "question": "What header should I use for API key authentication?",
+      "expected_answer": "API keys must be passed in the X-API-Key header.",
+      "expected_chunk_keywords": ["X-API-Key", "header", "api key"],
+      "tags": ["auth", "api"]
+    },
+    {
+      "id": "config-001",
+      "question": "What environment variables are required to run the platform?",
+      "expected_answer": "ACME_DATABASE_URL and ACME_SECRET_KEY are required. ACME_REDIS_URL, ACME_LOG_LEVEL, and ACME_MAX_UPLOAD_MB are optional.",
+      "expected_chunk_keywords": ["ACME_DATABASE_URL", "ACME_SECRET_KEY", "environment"],
+      "tags": ["configuration"]
+    },
+    {
+      "id": "config-002",
+      "question": "What is the recommended PostgreSQL connection pool size?",
+      "expected_answer": "The recommended pool size is 20 connections for most workloads, set via database.pool_size in config.yaml.",
+      "expected_chunk_keywords": ["pool_size", "20", "PgBouncer"],
+      "tags": ["configuration", "database"]
+    },
+    {
+      "id": "troubleshoot-001",
+      "question": "I'm getting 'Connection refused on port 5432', what should I do?",
+      "expected_answer": "PostgreSQL is not running. Start it with docker-compose up -d postgres and verify with pg_isready -h localhost.",
+      "expected_chunk_keywords": ["5432", "docker-compose", "pg_isready"],
+      "tags": ["troubleshooting"]
+    },
+    {
+      "id": "troubleshoot-002",
+      "question": "What is the default JWT token lifetime?",
+      "expected_answer": "The default JWT lifetime is 15 minutes.",
+      "expected_chunk_keywords": ["JWT", "15 minutes", "lifetime"],
+      "tags": ["auth", "troubleshooting"]
+    },
+    {
+      "id": "perf-001",
+      "question": "What cache hit rate is considered healthy?",
+      "expected_answer": "A healthy cache hit rate is above 80%, monitorable via the /metrics endpoint.",
+      "expected_chunk_keywords": ["cache", "80%", "metrics"],
+      "tags": ["performance"]
+    },
+    {
+      "id": "setup-001",
+      "question": "What are the system requirements for running the platform?",
+      "expected_answer": "Python 3.11+, PostgreSQL 15+ with pgvector, at least 4 GB RAM, Docker and Docker Compose.",
+      "expected_chunk_keywords": ["Python 3.11", "PostgreSQL 15", "4 GB", "Docker"],
+      "tags": ["setup"]
+    },
+    {
+      "id": "sso-001",
+      "question": "Which identity providers are supported for SSO?",
+      "expected_answer": "Okta, Azure AD, and OneLogin are supported. SSO uses SAML 2.0 and supports both IdP-initiated and SP-initiated flows.",
+      "expected_chunk_keywords": ["Okta", "Azure AD", "OneLogin", "SAML"],
+      "tags": ["auth", "enterprise"]
+    },
+    {
+      "id": "neg-001",
+      "question": "Does the platform support GraphQL?",
+      "expected_answer": "The provided documentation does not contain information about GraphQL support.",
+      "expected_chunk_keywords": [],
+      "tags": ["negative_test"]
+    }
+  ]
+}
