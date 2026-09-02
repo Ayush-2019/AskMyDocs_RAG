@@ -1,16 +1,4 @@
 #!/usr/bin/env python3
-"""
-CI quality gate checker.
-
-Reads the evaluation results JSON and exits non-zero if any quality
-threshold is breached — blocking the PR merge.
-
-Usage:
-    python eval/check_gates.py eval/results.json
-    python eval/check_gates.py eval/results.json --min-faithfulness 0.95
-
-Thresholds default to values in config.yaml but can be overridden via CLI flags.
-"""
 
 from __future__ import annotations
 
