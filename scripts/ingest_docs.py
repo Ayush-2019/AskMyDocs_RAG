@@ -1,13 +1,4 @@
 #!/usr/bin/env python3
-"""
-Document ingestion CLI.
-
-Ingest a single file or a directory of documents into the RAG pipeline.
-
-Usage:
-    python scripts/ingest_docs.py --path ./docs
-    python scripts/ingest_docs.py --path ./docs/setup.md --base-url https://docs.example.com
-"""
 
 import logging
 import sys
