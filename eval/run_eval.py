@@ -1,13 +1,4 @@
 #!/usr/bin/env python3
-"""
-RAG evaluation runner.
-
-Runs each test case from the golden dataset through the pipeline and
-computes retrieval, generation, and citation quality metrics.
-
-Usage:
-    python eval/run_eval.py --dataset eval/golden.json --output eval/results.json
-"""
 
 from __future__ import annotations
 
@@ -31,9 +22,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-# ---------------------------------------------------------------------------
 # LLM-as-judge for faithfulness and correctness
-# ---------------------------------------------------------------------------
 def _llm_judge(prompt: str) -> float:
     """
     Call OpenAI to judge answer quality on a 1-5 scale.
@@ -102,9 +91,7 @@ def judge_correctness(answer: str, expected: str) -> float:
     return _llm_judge(prompt)
 
 
-# ---------------------------------------------------------------------------
 # Retrieval quality metrics
-# ---------------------------------------------------------------------------
 def compute_retrieval_recall(
     retrieved_chunks: list[dict],
     expected_keywords: list[str],
@@ -131,9 +118,7 @@ def compute_retrieval_recall(
     return found / len(expected_keywords)
 
 
-# ---------------------------------------------------------------------------
 # Main evaluation loop
-# ---------------------------------------------------------------------------
 def run_evaluation(dataset_path: Path) -> dict:
     """Run all test cases and compute aggregate metrics."""
     from src.pipeline import pipeline
@@ -227,9 +212,7 @@ def run_evaluation(dataset_path: Path) -> dict:
     return results
 
 
-# ---------------------------------------------------------------------------
 # CLI
-# ---------------------------------------------------------------------------
 @click.command()
 @click.option(
     "--dataset", "-d",

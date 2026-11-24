@@ -1,13 +1,4 @@
 #!/usr/bin/env python3
-"""
-Database setup script.
-
-Creates the pgvector extension and all required tables.
-Run this once after starting your Postgres container:
-
-    docker-compose up -d
-    python scripts/setup_db.py
-"""
 
 import logging
 import sys

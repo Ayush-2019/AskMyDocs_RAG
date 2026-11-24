@@ -1,10 +1,3 @@
-/**
- * API client for the Ask My Docs backend.
- *
- * All fetch calls go through the Vite proxy (/api → localhost:8000)
- * so we avoid CORS issues during development. In production,
- * update BASE_URL to the real backend origin.
- */
 
 const BASE_URL = "/api";
 
@@ -29,11 +22,6 @@ async function request(path, options = {}) {
   return res.json();
 }
 
-/**
- * Upload multiple files for ingestion.
- * @param {File[]} files - Browser File objects from an <input>.
- * @returns {{ results: object[], total_chunks: number }}
- */
 export async function uploadFiles(files) {
   const form = new FormData();
   files.forEach((f) => form.append("files", f));
@@ -51,11 +39,7 @@ export async function uploadFiles(files) {
   return res.json();
 }
 
-/**
- * Ask a question and receive a cited answer.
- * @param {string} question
- * @returns {AskResponse}
- */
+
 export async function askQuestion(question) {
   return request("/ask", {
     method: "POST",
@@ -63,17 +47,12 @@ export async function askQuestion(question) {
   });
 }
 
-/**
- * Check backend health.
- * @returns {{ status: string, chunk_count: number }}
- */
+
 export async function checkHealth() {
   return request("/health");
 }
 
-/**
- * Get index statistics.
- */
+
 export async function getStats() {
   return request("/stats");
 }
