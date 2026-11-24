@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit",
+      "Write",
+      "Grep",
+      "Glob",
+      "Bash(python:*)",
+      "Bash(pytest:*)",
+      "Bash(uvicorn:*)",
+      "Bash(docker-compose:*)",
+      "Bash(pip install:*)",
+      "Bash(npm:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.local)"
+    ]
+  },
+  "env": {
+    "PYTHONPATH": "."
+  }
+}
